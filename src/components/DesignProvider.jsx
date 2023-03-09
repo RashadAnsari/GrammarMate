@@ -1,5 +1,7 @@
 import React from 'react';
-import { ConfigProvider, Row, Col } from 'antd';
+import { ConfigProvider, Layout } from 'antd';
+
+const { Content } = Layout;
 
 function DesignProvider({ children }) {
   const defaultTheme = {
@@ -14,11 +16,11 @@ function DesignProvider({ children }) {
 
   return (
     <ConfigProvider theme={defaultTheme}>
-      <Row align="middle">
-        <Col offset={1} span={22}>
+      <Layout>
+        <Content>
           {children}
-        </Col>
-      </Row>
+        </Content>
+      </Layout>
     </ConfigProvider>
   );
 }
