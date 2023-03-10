@@ -17,7 +17,11 @@ function HomePage() {
   const { t } = useTranslation();
 
   const formItemMargin = 35;
-  const textAreaFontSize = token.fontSize + 2;
+  const textAreaStyles = {
+    lineHeight: 1.75,
+    fontSize: token.fontSize + 8,
+    color: token.colorTextSecondary,
+  };
 
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
@@ -61,7 +65,7 @@ function HomePage() {
     <div style={{ margin: config.pageMargin }}>
       <div style={{
         margin: 'auto',
-        maxWidth: '80%',
+        maxWidth: '90%',
         textAlign: 'center',
       }}
       >
@@ -73,21 +77,22 @@ function HomePage() {
           >
             <TextArea
               rows={5}
-              style={{ fontSize: textAreaFontSize }}
+              style={textAreaStyles}
               placeholder={t('Please input your text here...')}
-              // onKeyDown={(event) => {
-              //   if (event.key === 'Enter') {
-              //     handleSubmit();
-              //   }
-              // }}
             />
           </Form.Item>
           <Form.Item style={{ marginBottom: formItemMargin }}>
             <Button
-              size="large"
               type="primary"
               htmlType="submit"
               loading={loading}
+              style={{
+                fontSize: 20,
+                width: 'auto',
+                height: 'auto',
+                fontWeight: 'bold',
+                padding: '10px 20px',
+              }}
               onClick={handleSubmit}
             >
               {t('Correct me')}
@@ -98,7 +103,7 @@ function HomePage() {
           rows={5}
           readOnly
           value={result}
-          style={{ fontSize: textAreaFontSize }}
+          style={textAreaStyles}
           placeholder={t('The result will show up here...')}
         />
       </div>
