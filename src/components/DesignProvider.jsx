@@ -9,8 +9,8 @@ function DesignProvider({ children }) {
     token: {
       // fontFamily: "'Roboto', sans-serif",
       colorPrimary: '#0072c6',
-      colorSplit: '#d9d9d9',
       colorInfo: '#0072c6',
+      colorBgBase: '#f8fcf7',
     },
   };
 

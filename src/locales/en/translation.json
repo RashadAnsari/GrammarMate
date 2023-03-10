@@ -1,4 +1,12 @@
 {
+  "OpenAI API Key": "OpenAI API Key",
+  "Submit": "Submit",
+  "Please input your API Key.": "Please input your API Key.",
+  "Something went wrong! Please try again later.": "Something went wrong! Please try again later.",
+  "Please input your text.": "Please input your text.",
+  "Please input your text here...": "Please input your text here...",
+  "Correct me": "Correct me",
+  "The result will show up here...": "The result will show up here...",
   "Sorry, the page you visited does not exist.": "Sorry, the page you visited does not exist.",
   "Error": "Error"
 }
