@@ -4,7 +4,6 @@ import {
 } from 'antd';
 import { useTranslation } from 'react-i18next';
 import APIKeyModal from '../components/APIKeyModal';
-import config from '../config';
 import { alertError } from '../utils';
 import { lookForAPIKey, storeAPIKey, correctGrammar } from '../openai';
 
@@ -62,51 +61,61 @@ function HomePage() {
   };
 
   return (
-    <div style={{ margin: config.pageMargin }}>
+    <div style={{
+      margin: 'auto',
+      maxWidth: '90%',
+      textAlign: 'center',
+    }}
+    >
       <div style={{
         margin: 'auto',
         maxWidth: '90%',
         textAlign: 'center',
+        marginBottom: 40,
+        color: token.colorTextSecondary,
       }}
       >
-        <Form form={form}>
-          <Form.Item
-            name="inputText"
-            style={{ marginBottom: formItemMargin, textAlign: 'left' }}
-            rules={[{ required: true, message: t('Please input your text.') }]}
-          >
-            <TextArea
-              rows={5}
-              style={textAreaStyles}
-              placeholder={t('Please input your text here...')}
-            />
-          </Form.Item>
-          <Form.Item style={{ marginBottom: formItemMargin }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              loading={loading}
-              style={{
-                fontSize: 20,
-                width: 'auto',
-                height: 'auto',
-                fontWeight: 'bold',
-                padding: '10px 20px',
-              }}
-              onClick={handleSubmit}
-            >
-              {t('Correct me')}
-            </Button>
-          </Form.Item>
-        </Form>
-        <TextArea
-          rows={5}
-          readOnly
-          value={result}
-          style={textAreaStyles}
-          placeholder={t('The result will show up here...')}
-        />
+        <h3>
+          {t('Welcome to GrammarMate, your ultimate grammar companion! With the power of ChatGPT, you can now instantly correct any grammatical errors in your writing. Simply type in a sentence and get suggestions for improvement. Say goodbye to grammar errors and hello to confident writing with GrammarMate!')}
+        </h3>
       </div>
+      <Form form={form}>
+        <Form.Item
+          name="inputText"
+          style={{ marginBottom: formItemMargin, textAlign: 'left' }}
+          rules={[{ required: true, message: t('Please input your text.') }]}
+        >
+          <TextArea
+            rows={5}
+            style={textAreaStyles}
+            placeholder={t('Please input your text here...')}
+          />
+        </Form.Item>
+        <Form.Item style={{ marginBottom: formItemMargin }}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={loading}
+            style={{
+              fontSize: 20,
+              width: 'auto',
+              height: 'auto',
+              fontWeight: 'bold',
+              padding: '10px 20px',
+            }}
+            onClick={handleSubmit}
+          >
+            {t('Correct me')}
+          </Button>
+        </Form.Item>
+      </Form>
+      <TextArea
+        rows={5}
+        readOnly
+        value={result}
+        style={textAreaStyles}
+        placeholder={t('The result will show up here...')}
+      />
       <APIKeyModal {...apiKeyModalProps} />
     </div>
   );
