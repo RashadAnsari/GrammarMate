@@ -33,8 +33,7 @@ export const correctGrammar = async (inputText, apiKey) => {
   const client = new OpenAIApi(new Configuration({ apiKey }));
 
   try {
-    const maxTokens = inputText.trim().length + 100;
-    console.log(maxTokens);
+    const maxTokens = inputText.trim().length + 96;
     const resp = await client.createCompletion({
       model: 'text-davinci-002',
       prompt: `Correct below sentences to standard English:\n${inputText}`,

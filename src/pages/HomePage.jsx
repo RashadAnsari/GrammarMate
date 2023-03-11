@@ -18,7 +18,7 @@ function HomePage() {
   const formItemMargin = 35;
   const textAreaStyles = {
     lineHeight: 1.75,
-    fontSize: token.fontSize + 8,
+    fontSize: 20,
     color: token.colorTextSecondary,
   };
 
@@ -82,12 +82,22 @@ function HomePage() {
       <Form form={form}>
         <Form.Item
           name="inputText"
+          validateTrigger={false}
           style={{ marginBottom: formItemMargin, textAlign: 'left' }}
           rules={[{ required: true, message: t('Please input your text.') }]}
         >
           <TextArea
             rows={5}
+            showCount
+            allowClear
+            maxLength={4000}
             style={textAreaStyles}
+            className="main-input"
+            onChange={(event) => {
+              if (!event.target.value) {
+                setResult();
+              }
+            }}
             placeholder={t('Please input your text here...')}
           />
         </Form.Item>
