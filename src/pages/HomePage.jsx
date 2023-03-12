@@ -107,9 +107,11 @@ function HomePage() {
             htmlType="submit"
             loading={loading}
             style={{
+              border: 0,
               fontSize: 20,
               width: 'auto',
               height: 'auto',
+              boxShadow: 'none',
               fontWeight: 'bold',
               padding: '10px 20px',
             }}
