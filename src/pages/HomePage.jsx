@@ -3,6 +3,7 @@ import {
   theme, Input, Button, Form,
 } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { DiffChars } from 'react-diff-components';
 import APIKeyModal from '../components/APIKeyModal';
 import { alertError } from '../utils';
 import { lookForAPIKey, storeAPIKey, correctGrammar } from '../openai';
@@ -17,14 +18,21 @@ function HomePage() {
 
   const formItemMargin = 35;
   const textAreaStyles = {
-    lineHeight: 1.75,
     fontSize: 20,
+    resize: 'none',
+    lineHeight: 1.75,
     color: token.colorTextSecondary,
   };
 
+  const [value, setValue] = useState();
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
   const [apiKeyModalProps, setApiKeyModalProps] = useState({});
+
+  const handleClear = () => {
+    setValue();
+    setResult();
+  };
 
   const handleSubmit = () => {
     form
@@ -49,6 +57,7 @@ function HomePage() {
         setLoading(true);
         correctGrammar(inputText, apiKey)
           .then((correctInput) => {
+            setValue(inputText);
             setResult(correctInput);
             setLoading(false);
           })
@@ -87,17 +96,14 @@ function HomePage() {
           rules={[{ required: true, message: t('Please input your text.') }]}
         >
           <TextArea
-            rows={5}
+            rows={7}
             showCount
             allowClear
+            autoFocus
             maxLength={4000}
             style={textAreaStyles}
             className="main-input"
-            onChange={(event) => {
-              if (!event.target.value) {
-                setResult();
-              }
-            }}
+            onChange={(event) => { if (!event.target.value) { handleClear(); } }}
             placeholder={t('Please input your text here...')}
           />
         </Form.Item>
@@ -121,8 +127,21 @@ function HomePage() {
           </Button>
         </Form.Item>
       </Form>
+      {value && result
+        ? (
+          <div style={{
+            marginLeft: 12,
+            marginRight: 12,
+            marginBottom: 20,
+            textAlign: 'left',
+          }}
+          >
+            <DiffChars from={value} to={result} />
+          </div>
+        )
+        : null}
       <TextArea
-        rows={5}
+        rows={7}
         readOnly
         value={result}
         style={textAreaStyles}
