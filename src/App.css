@@ -20,30 +20,3 @@ body {
 .main-input .ant-input-data-count {
   font-size: 16px;
 }
-
-/* https://github.com/LorinWeb/react-diff-components/blob/master/src/lib/components/Diff.scss */
-.Diff {
-  display: inline;
-  font-size: 18px;
-  line-height: 1.75;
-  background-color: #ebf6e8;
-  color: rgba(0, 0, 0, 0.65);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.Diff__text--added {
-  color: #52c41a;
-  background-color: #ebf6e8;
-}
-
-.Diff__text--equal {
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.Diff__text--removed {
-  color: #ff4d4f;
-  background-color: #ebf6e8;
-}
-/* https://github.com/LorinWeb/react-diff-components/blob/master/src/lib/components/Diff.scss */

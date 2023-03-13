@@ -3,8 +3,8 @@ import {
   theme, Input, Button, Form,
 } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { DiffChars } from 'react-diff-components';
 import APIKeyModal from '../components/APIKeyModal';
+import DiffGrammar from '../components/DiffGrammar';
 import { alertError } from '../utils';
 import { lookForAPIKey, storeAPIKey, correctGrammar } from '../openai';
 
@@ -38,7 +38,7 @@ function HomePage() {
     form
       .validateFields()
       .then(async (values) => {
-        const { inputText } = values;
+        const inputText = values.inputText.trim();
 
         let apiKey = lookForAPIKey();
         if (!apiKey) {
@@ -136,7 +136,7 @@ function HomePage() {
             textAlign: 'left',
           }}
           >
-            <DiffChars from={value} to={result} />
+            <DiffGrammar from={value} to={result} />
           </div>
         )
         : null}
