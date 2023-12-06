@@ -1,7 +1,5 @@
 import React from 'react';
 import { ConfigProvider, Layout } from 'antd';
-import NavigationMenu from './NavigarionMenu';
-import FooterMenu from './FooterMenu';
 import cfg from '../config';
 
 const { Content } = Layout;
@@ -20,11 +18,9 @@ function DesignProvider({ children }) {
   return (
     <ConfigProvider theme={defaultTheme}>
       <Layout>
-        <NavigationMenu />
         <Content style={{ margin: cfg.pageMargin }}>
           {children}
         </Content>
-        <FooterMenu />
       </Layout>
     </ConfigProvider>
   );

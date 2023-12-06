@@ -77,10 +77,21 @@ function HomePage() {
     }}
     >
       <div style={{
+        display: 'flex',
+        marginBottom: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: token.colorText,
+      }}
+      >
+        <img src="logo192.png" alt="GrammarMate" width={100} />
+        <h1 style={{ marginLeft: 20 }}>GrammarMate</h1>
+      </div>
+      <div style={{
         margin: 'auto',
         maxWidth: '90%',
-        textAlign: 'center',
         marginBottom: 40,
+        textAlign: 'center',
         color: token.colorTextSecondary,
       }}
       >
@@ -148,6 +159,14 @@ function HomePage() {
         placeholder={t('The result will show up here...')}
       />
       <APIKeyModal {...apiKeyModalProps} />
+      <div style={{
+        margin: '50px 0px',
+        textAlign: 'center',
+        color: token.colorTextTertiary,
+      }}
+      >
+        {t('Copyright © 2023 GrammarMate all rights reserved.')}
+      </div>
     </div>
   );
 }
